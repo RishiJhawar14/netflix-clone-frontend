@@ -14,9 +14,9 @@ const Home = ({ type }) => {
     const getRandomLists = async () => {
       try {
         const res = await axios.get(
-          `lists${type ? "?type=" + type : ""}${
-            genre ? "&genre=" + genre : ""
-          }`,
+          `https://netflix-clone-api-5cn1.onrender.com/api/lists${
+            type ? "?type=" + type : ""
+          }${genre ? "&genre=" + genre : ""}`,
           {
             headers: {
               token:
@@ -36,14 +36,18 @@ const Home = ({ type }) => {
 
   return (
     <div className="home">
-      <Navbar setGenre={setGenre}/>
-      <Featured type={type}  setGenre={setGenre}/>
-      {lists.map((list) => (  
-        <List list={list} key={list._id}/>
+      <Navbar setGenre={setGenre} />
+      <Featured type={type} setGenre={setGenre} />
+      {lists.map((list) => (
+        <List list={list} key={list._id} />
       ))}
       <div className="bottomBar">
         <span className="text">Made by Rishi Jhawar</span>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png" alt="" className="logo" />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
+          alt=""
+          className="logo"
+        />
       </div>
     </div>
   );
